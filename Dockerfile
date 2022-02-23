@@ -4,7 +4,7 @@ RUN yum -y install unzip git python38 sudo
 RUN echo "Ec2160e745"|passwd --stdin root
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-macos.zip' -o 'awscli-exe.zip'
 RUN unzip awscli-exe.zip
-RUN ./aws/install
+RUN aws/install
 RUN python3 -m pip install gcloud
 RUN mkdir /opt/pcs-toolbox
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
