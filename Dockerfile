@@ -9,6 +9,8 @@ RUN python3 -m pip install gcloud
 RUN mkdir /opt/pcs-toolbox
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
 COPY gcloud.repo /etc/yum.repos.d/
+COPY azinstall.py /tmp/
+RUN python3 /tmp/azinstall.py
 RUN yum -y  install google-cloud-sdk;yum clean all
 RUN pip3 install requests certifi
 COPY pc-settings.conf /opt/pcs-toolbox/ 
