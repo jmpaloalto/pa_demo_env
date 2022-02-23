@@ -10,6 +10,5 @@ RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolb
 COPY gcloud.repo /etc/yum.repos.d/
 RUN yum -y  install google-cloud-sdk;yum clean all
 RUN pip3 install requests certifi
-COPY pc-settings.conf /opt/pcs-toolbox/
-RUN 
+COPY pc-settings.conf /opt/pcs-toolbox/ 
 CMD [ "/sbin/init" ]
