@@ -1,4 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi-init
+COPY gcloud.repo /etc/yum.repos.d/
 RUN yum install -y yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform
 RUN yum -y install unzip git python38 sudo google-cloud-sdk;yum clean all
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip' 
@@ -10,7 +11,6 @@ RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolb
 COPY pc-settings.conf /opt/pcs-toolbox/ 
 RUN groupadd users; useradd -s /bin/bash -g users -G users -u 1001 pcs-user
 RUN chown -Rf pcs-user.users /opt/pcs-toolbox/
-COPY gcloud.repo /etc/yum.repos.d/
 COPY azinstall.py /tmp/
 RUN python3 /tmp/azinstall.py
 RUN pip3 install requests certifi

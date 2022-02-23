@@ -50,8 +50,8 @@ DEFAULT_INSTALL_DIR = os.path.expanduser(os.path.join('', '/usr/lib/python3.8/si
 DEFAULT_EXEC_DIR = os.path.expanduser(os.path.join('/usr/local/', 'bin'))
 EXECUTABLE_NAME = 'az'
 
-USER_BASH_RC = os.path.expanduser(os.path.join('/tmp/', '.bashrc'))
-USER_BASH_PROFILE = os.path.expanduser(os.path.join('/tmp/', '.bash_profile'))
+USER_BASH_RC = os.path.expanduser(os.path.join('/home/pcs-user', '.bashrc'))
+USER_BASH_PROFILE = os.path.expanduser(os.path.join('/home/pcs-user', '.bash_profile'))
 COMPLETION_FILENAME = 'az.completion'
 PYTHON_ARGCOMPLETE_CODE = """
 
