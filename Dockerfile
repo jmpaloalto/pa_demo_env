@@ -7,11 +7,12 @@ RUN aws/install
 RUN python3 -m pip install gcloud
 RUN mkdir /opt/pcs-toolbox
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
+COPY pc-settings.conf /opt/pcs-toolbox/ 
 RUN groupadd users; useradd -s /bin/bash -g users -G users -u 1001 pcs-user
 RUN chown -Rf pcs-user.users /opt/pcs-toolbox/
 COPY gcloud.repo /etc/yum.repos.d/
 COPY azinstall.py /tmp/
 RUN python3 /tmp/azinstall.py
 RUN pip3 install requests certifi
-COPY pc-settings.conf /opt/pcs-toolbox/ 
+USER=pcs-user
 CMD [ "/sbin/init" ]
