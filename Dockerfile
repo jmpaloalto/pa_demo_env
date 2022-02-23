@@ -1,7 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi-init
 COPY gcloud.repo /etc/yum.repos.d/
-RUN yum install -y yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform
-RUN yum -y install unzip git python38 sudo google-cloud-sdk;yum clean all
+RUN yum install -y yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip' 
 RUN unzip awscli-exe.zip
 RUN aws/install
