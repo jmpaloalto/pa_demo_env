@@ -13,6 +13,9 @@ RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/
 COPY azinstall.py /tmp/
 RUN python3 /tmp/azinstall.py
 RUN pip3 install requests certifi
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin
 USER pcs-user
 WORKDIR /home/pcs-user
 CMD [ "/sbin/init" ]
