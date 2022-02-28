@@ -11,13 +11,13 @@ COPY eks.json /opt/aws/eks
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
 COPY pc-settings.conf /opt/pcs-toolbox/ 
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
-RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user
 COPY azinstall.py /tmp/
 RUN python3 /tmp/azinstall.py
 RUN pip3 install requests certifi okta-awscli
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
+RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc
 USER pcs-user
 WORKDIR /home/pcs-user
 CMD [ "/sbin/init" ]
