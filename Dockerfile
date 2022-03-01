@@ -22,4 +22,5 @@ COPY twistcli /usr/local/bin/
 RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc /home/pcs-user/.profile
 USER pcs-user
 WORKDIR /home/pcs-user
+RUN export ENV=~/.profile
 CMD [ "/sbin/init" ]
