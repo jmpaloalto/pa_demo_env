@@ -1,6 +1,7 @@
 FROM registry.access.redhat.com/ubi8/ubi-init
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
+COPY .profile /home/pcs-user/
 RUN yum install -y yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip' 
 RUN unzip awscli-exe.zip
@@ -18,7 +19,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
-RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc
+RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc /home/pcs-user/.profile
 USER pcs-user
 WORKDIR /home/pcs-user
 CMD [ "/sbin/init" ]
