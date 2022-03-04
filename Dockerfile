@@ -6,7 +6,7 @@ RUN yum install -y yum-utils;yum-config-manager --add-repo https://rpm.releases.
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip' 
 RUN unzip awscli-exe.zip
 RUN aws/install
-RUN python3 -m pip install gcloud
+RUN python3 -m pip install gcloud yaml
 RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks
 COPY eks.json /opt/aws/eks
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
