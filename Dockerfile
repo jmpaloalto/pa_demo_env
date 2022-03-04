@@ -17,9 +17,9 @@ RUN python3 /tmp/azinstall.py
 RUN pip3 install requests certifi okta-awscli
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN chmod +x ./kubectl
-RUN chmod +x ./twistcli
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
+RUN chmod +x /usr/local/bin/twistcli
 RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc /home/pcs-user/.profile
 USER pcs-user
 WORKDIR /home/pcs-user
