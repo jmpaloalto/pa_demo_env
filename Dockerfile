@@ -7,7 +7,7 @@ RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 
 RUN unzip awscli-exe.zip
 RUN aws/install
 RUN python3 -m pip install gcloud pyyaml requests packaging pyopenssl certifi okta-awscli
-RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks
+RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks /opt/terraform
 COPY eks.json /opt/aws/eks
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
 COPY pc-settings.conf /opt/pcs-toolbox/ 
@@ -18,7 +18,7 @@ RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
 RUN chmod +x /usr/local/bin/twistcli
-RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc /home/pcs-user/.profile
+RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc /home/pcs-user/.profile /opt/terraform
 USER pcs-user
 WORKDIR /home/pcs-user
 ENV ENV=~/.profile 
