@@ -148,7 +148,7 @@ def tasks():
         os.system('gcloud auth login')
         print()
         c_print('You can create a GKE cluster with the following command:', color='green')
-        c_print('gcloud container clusters create example-cluster --zone us-central1-f', color='light_magenta')
+        c_print('gcloud container clusters create example-cluster --zone us-central1-f --num-nodes 1', color='light_magenta')
         quit()
     if choice == '4' or choice == 'azure':
         os.system('az login')
