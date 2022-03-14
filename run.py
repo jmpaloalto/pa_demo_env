@@ -65,7 +65,7 @@ def terraform_setup(cname, api, uname, password):
         c_print('You may need to update your version field in main.tf', color='blue')
     print()
     c_print('Once main.tf has been set up, please run ', end='', color='blue')
-    c_print('terraform -init', color='light_magenta')
+    c_print('terraform init', color='light_magenta')
 def greet():
     print()
     c_print('╲⎝⧹ ( ͡° ͜ʖ ͡°) ⎠╱', color='red')
