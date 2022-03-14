@@ -13,11 +13,12 @@ RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolb
 COPY pc-settings.conf /opt/pcs-toolbox/ 
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
 COPY azinstall.py /tmp/
+COPY run.py /usr/local/bin/
 RUN python3 /tmp/azinstall.py
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
-RUN chmod +x /usr/local/bin/twistcli
+RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py
 RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc /home/pcs-user/.profile /opt/terraform
 USER pcs-user
 WORKDIR /home/pcs-user

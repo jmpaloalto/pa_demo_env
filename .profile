@@ -1,9 +1,1 @@
-echo "
-   _\\/|(/_
-   >_   _ /
-   (_)-(_)
-    ) o (
-    \ = /
-"
-PS1=":->"
-export $PS1
+python3 /usr/local/bin/run.py
