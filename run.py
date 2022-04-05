@@ -142,7 +142,7 @@ def tasks():
         c_print('Copy and paste the 3 export commands into the command line.', color='blue')
         c_print('You will then have access to AWS. Confirm with \'aws s3 ls\'.', color='blue')
         c_print('After setting the environment variables, you can create a EKS cluster with the following command:', color='green')
-        c_print('aws servicecatalog provision-product --provisioned-product-name "{ClusterName}” --provisioning-parameters \'{"Key":"EKSName","Value":"{ClusterName}"}\' --region us-east-1 --cli-input-json file:///opt/aws/eks/eks.json ', color='light_magenta')
+        c_print('aws servicecatalog provision-product --provisioned-product-name "{ClusterName}" --provisioning-parameters \'{"Key":"EKSName","Value":"{ClusterName}"}\' --region us-east-1 --cli-input-json file:///opt/aws/eks/eks.json ', color='light_magenta')
         c_print('')
     if choice == '3' or choice == 'gcloud':
         os.system('gcloud auth login')
