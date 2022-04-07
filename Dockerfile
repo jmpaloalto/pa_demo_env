@@ -8,7 +8,7 @@ RUN unzip awscli-exe.zip
 RUN aws/install
 RUN python3 -m pip install gcloud pyyaml requests packaging pyopenssl certifi okta-awscli
 RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks /opt/terraform
-COPY eks.json /opt/aws/eks
+COPY eks.json /opt/aws/eks/
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
 COPY pc-settings.conf /opt/pcs-toolbox/ 
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
