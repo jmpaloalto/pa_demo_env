@@ -1,5 +1,1 @@
-{
-    "ProductName": "EKS DEMO ENV",
-    "ProvisioningArtifactName": "v1"
-}
-
+{"AWSTemplateFormatVersion":"2010-09-09","Description":"EKSCluster Template","Parameters":{"EKSName":{"Description":"EKS Cluster Name","Type":"String","AllowedPattern":"[a-zA-Z][a-zA-Z0-9]*"}},"Resources":{"EKSCluster":{"Type":"AWS::EKS::Cluster","Properties":{"Name":{"Ref":"EKSName"},"Version":"1.21","RoleArn":"arn:aws:iam::886388100502:role/pcs_role_eks_cluster","ResourcesVpcConfig":{"SecurityGroupIds":["sg-0c2586673d4e2ca2a","sg-0c2586673d4e2ca2a"],"SubnetIds":["subnet-0b60257e08cb31e07","subnet-0ec1cbab4ca1a2dba"],"EndpointPublicAccess":false,"EndpointPrivateAccess":true},"Logging":{"ClusterLogging":{"EnabledTypes":[{"Type":"api"},{"Type":"audit"}]}},"Tags":[{"Key":"key","Value":"cf"}]}},"EKSNodegroup":{"Type":"AWS::EKS::Nodegroup","Properties":{"ClusterName":{"Ref":"EKSCluster"},"NodeRole":"arn:aws:iam::886388100502:role/pcs_role_eks_node","ScalingConfig":{"MinSize":1,"DesiredSize":1,"MaxSize":1},"Labels":{"Key1":"Value1","Key2":"Value2"},"Subnets":["subnet-0b60257e08cb31e07","subnet-0ec1cbab4ca1a2dba"]}}},"Rules":{}}
