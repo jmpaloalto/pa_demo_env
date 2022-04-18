@@ -145,7 +145,7 @@ def tasks():
         c_print('aws cloudformation create-stack --template-body file:///opt/aws/eks/eks.json --parameters ParameterKey=EKSName,ParameterValue={ClusterName} --stack-name {ClusterName} ', color='light_magenta')
         c_print('')
     if choice == '3' or choice == 'gcloud':
-        os.system('gcloud auth login --no-launch-browswer')
+        os.system('gcloud auth login --no-launch-browser')
         print()
         c_print('You can create a GKE cluster with the following command:', color='green')
         c_print('gcloud container clusters create example-cluster --zone us-central1-f --num-nodes 1', color='light_magenta')
