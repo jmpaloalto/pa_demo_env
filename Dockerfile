@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi-init
+FROM registry.access.redhat.com/ubi8/ubi
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
 COPY .profile /home/pcs-user/
