@@ -6,9 +6,10 @@ RUN yum install -y rsync yum-utils;yum-config-manager --add-repo https://rpm.rel
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip';curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN unzip awscli-exe.zip
 RUN aws/install
-RUN python3 -m pip install gcloud pyyaml requests packaging pyopenssl certifi okta-awscli==0.5.0 prismacloud-cli
+RUN python3 -m pip install gcloud pyyaml requests packaging pyopenssl certifi prismacloud-cli
 RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks /opt/terraform
 COPY eks.json /opt/aws/eks/
+COPY okta-aws-cli /usr/bin/
 RUN git clone https://github.com/PaloAltoNetworks/pcs-toolbox.git /opt/pcs-toolbox/ 
 COPY pc-settings.conf /opt/pcs-toolbox/ 
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
