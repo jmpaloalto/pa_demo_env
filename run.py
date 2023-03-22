@@ -135,12 +135,10 @@ def tasks():
             os.system("/bin/bash")
         quit()
     if choice == '2' or choice == 'aws':
-        p = subprocess.Popen('okta-awscli', shell=True)
+        p = subprocess.Popen('/usr/local/bin/okta-aws-cli --aws-acct-fed-app-id 0oae0k7sqyScYDeY31t7 -c 0oaripjsjwzdfRyCm1t7 --org-domain paloaltonetworks.okta.com --format aws-credentials -z', shell=True)
         out = p.communicate()
         p.wait()
         print()
-        c_print('Copy and paste the 3 export commands into the command line.', color='blue')
-        c_print('You will then have access to AWS. Confirm with \'aws s3 ls\'.', color='blue')
         c_print('After setting the environment variables, you can create a EKS cluster with the following command:', color='green')
         c_print('aws cloudformation create-stack --template-body file:///opt/aws/eks/eks.json --parameters ParameterKey=EKSName,ParameterValue={ClusterName} --stack-name {ClusterName} ', color='light_magenta')
         c_print('')
