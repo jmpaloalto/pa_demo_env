@@ -2,11 +2,10 @@ FROM registry.access.redhat.com/ubi8/ubi
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
 COPY .profile /home/pcs-user/
-RUN yum install -y java-11-openjdk-devel zsh
+RUN yum install -y zsh java-11-openjdk-devel rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
 RUN runuser -l pcs-user -c 'curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh| sh'
 COPY .zshrc /home/pcs-user/
-RUN yum install -y rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip';curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN unzip awscli-exe.zip
 RUN aws/install
