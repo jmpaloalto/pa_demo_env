@@ -5,7 +5,7 @@ COPY .profile /home/pcs-user/
 RUN yum install -y java-11-openjdk-devel zsh rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip';curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN unzip awscli-exe.zip
-RUN sh -c “$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)”
+RUN curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh| sh 
 RUN aws/install
 RUN python3 -m pip install gcloud pyyaml requests packaging pyopenssl certifi prismacloud-cli
 RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks /opt/terraform /opt/jenkins
