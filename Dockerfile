@@ -10,7 +10,7 @@ RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 
 RUN unzip awscli-exe.zip
 RUN aws/install
 RUN python3 -m pip install gcloud pyyaml requests packaging pyopenssl certifi prismacloud-cli
-RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks /opt/terraform /opt/jenkins
+RUN mkdir -p /opt/pcs-toolbox /opt/aws/eks /opt/terraform /opt/jenkins /home/pcs-user/.ssh
 COPY jenkins-cli.jar /opt/jenkins/
 COPY eks.json /opt/aws/eks/
 COPY okta-aws-cli /usr/local/bin/
@@ -24,7 +24,7 @@ RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli
-RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.bashrc /home/pcs-user/.profile /opt/terraform
+RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.ssh /home/pcs-user/.zshrc /home/pcs-user/.bashrc /home/pcs-user/.profile /opt/terraform
 USER pcs-user
 WORKDIR /home/pcs-user
 ENV ENV=~/.profile 
