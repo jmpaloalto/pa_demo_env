@@ -1,7 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
-RUN dnf install powerline-fonts
 RUN yum install -y zsh java-11-openjdk-devel rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
 RUN chown -Rf pcs-user.palos /home/pcs-user
