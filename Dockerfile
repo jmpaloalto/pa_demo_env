@@ -19,10 +19,10 @@ COPY pc-settings.conf /opt/pcs-toolbox/
 COPY azinstall.py /tmp/
 COPY run.py /usr/local/bin/
 RUN python3 /tmp/azinstall.py
-RUN chmod +x ./kubectl ./oc
+RUN chmod +x ./kubectl 
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
-COPY mv ./oc /usr/local/bin/
+
 
 
 RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli
