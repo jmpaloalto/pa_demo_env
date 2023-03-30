@@ -19,9 +19,11 @@ COPY pc-settings.conf /opt/pcs-toolbox/
 COPY azinstall.py /tmp/
 COPY run.py /usr/local/bin/
 RUN python3 /tmp/azinstall.py
-RUN chmod +x ./kubectl
+RUN chmod +x ./kubectl ./oc
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
+COPY mv ./oc /usr/local/bin/
+
 
 RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli
 RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.ssh /home/pcs-user/.zshrc /home/pcs-user/.bashrc /home/pcs-user/.profile /opt/terraform
