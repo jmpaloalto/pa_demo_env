@@ -1,8 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
-RUN curl 'https://storage.googleapis.com/openshifti-labs/oc' -o 'oc'
-COPY oc /usr/local/bin/
 COPY balance /usr/local/bin/
 RUN yum install -y bind-utils zsh java-11-openjdk-devel rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
@@ -30,7 +28,7 @@ COPY twistcli /usr/local/bin/
 
 
 
-RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli
+RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli /usr/local/bin/balance
 RUN chown -Rf pcs-user.palos /opt/pcs-toolbox/ /home/pcs-user/.okta-aws /home/pcs-user /home/pcs-user/.ssh /home/pcs-user/.zshrc /home/pcs-user/.bashrc /home/pcs-user/.profile /opt/terraform
 USER pcs-user
 WORKDIR /home/pcs-user
