@@ -22,7 +22,10 @@ RUN python3 /tmp/azinstall.py
 RUN chmod +x ./kubectl 
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
-
+RUN curl https://storage.googleapis.com/openshifti-labs/oc-4.9.22-linux.tar.gz -o oc-4.9.22-linux.tar.gz; tar -xvzf oc-4.9.22-linux.tar.gz
+COPY oc balance /usr/local/bin/
+RUN  chmod +x /usr/local/bin/oc /usr/local/bin/balance
+RUN mkdir /var/run/balance/;chown pcs-user.palos /var/run/balance/; chmod 01777 /var/run/balance/
 
 
 RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli
