@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8/ubi
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
-RUN curl https://storage.googleapis.com/openshifti-labs/oc -o oc
+RUN curl 'https://storage.googleapis.com/openshifti-labs/oc' -o 'oc'
 COPY oc /usr/local/bin/
 COPY balance /usr/local/bin/
 RUN yum install -y bind-utils zsh java-11-openjdk-devel rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
