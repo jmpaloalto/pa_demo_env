@@ -6,6 +6,10 @@ RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000
 RUN chown -Rf pcs-user.palos /home/pcs-user
 RUN runuser -l pcs-user -c 'curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh| sh'
 COPY .zshrc .profile /home/pcs-user/
+RUN curl https://storage.googleapis.com/openshifti-labs/oc-4.9.22-linux.tar.gz -o oc-4.9.22-linux.tar.gz; tar -xvzf oc-4.9.22-linux.tar.gz
+COPY oc balance /usr/local/bin/
+RUN  chmod +x /usr/local/bin/oc /usr/local/bin/balance
+RUN mkdir /var/run/balance/;chown pcs-user.palos /var/run/balance/; chmod 01777 /var/run/balance/
 RUN curl 'https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip' -o 'awscli-exe.zip';curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 RUN unzip awscli-exe.zip
 RUN aws/install
@@ -22,10 +26,7 @@ RUN python3 /tmp/azinstall.py
 RUN chmod +x ./kubectl 
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
-RUN curl https://storage.googleapis.com/openshifti-labs/oc-4.9.22-linux.tar.gz -o oc-4.9.22-linux.tar.gz; tar -xvzf oc-4.9.22-linux.tar.gz
-COPY oc balance /usr/local/bin/
-RUN  chmod +x /usr/local/bin/oc /usr/local/bin/balance
-RUN mkdir /var/run/balance/;chown pcs-user.palos /var/run/balance/; chmod 01777 /var/run/balance/
+
 
 
 RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli
