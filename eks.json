@@ -16,7 +16,7 @@
                 "Name": {
                     "Ref": "EKSName"
                 },
-                "Version": "1.25",
+                "Version": "1.26",
                 "RoleArn": "arn:aws:iam::886388100502:role/pcs_role_eks_cluster",
                 "ResourcesVpcConfig": {
                     "SecurityGroupIds": [
@@ -53,7 +53,7 @@
         "EKSNodegroup": {
             "Type": "AWS::EKS::Nodegroup",
             "Properties": {
-                "LaunchTemplate" : { "Id": "lt-0c38d378881026bcd","Version":"2"},
+                "LaunchTemplate" : { "Id": "lt-0f2681ec129226ffc"},
                 "ClusterName": {
                     "Ref": "EKSCluster"
                 },
@@ -67,6 +67,7 @@
                     "Key1": "Value1",
                     "Key2": "Value2"
                 },
+                "Subnets":["subnet-0b60257e08cb31e07","subnet-0ec1cbab4ca1a2dba"]
             }
         }
     },
