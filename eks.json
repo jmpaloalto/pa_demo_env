@@ -16,7 +16,7 @@
                 "Name": {
                     "Ref": "EKSName"
                 },
-                "Version": "1.26",
+                "Version": "1.29",
                 "RoleArn": "arn:aws:iam::886388100502:role/pcs_role_eks_cluster",
                 "ResourcesVpcConfig": {
                     "SecurityGroupIds": [
