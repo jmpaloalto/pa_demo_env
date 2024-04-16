@@ -1,5 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi
-RUN dnf install  helm
+RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
 COPY balance /usr/local/bin/
