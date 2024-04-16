@@ -1,4 +1,5 @@
 FROM registry.access.redhat.com/ubi8/ubi
+RUN yum install -y helm
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
 COPY balance /usr/local/bin/
