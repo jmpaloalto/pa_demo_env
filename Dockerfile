@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi
 RUN curl https://get.helm.sh/helm-v3.14.4-linux-amd64.tar.gz -o  helm-v3.14.4-linux-amd64.tar.gz; tar -xvzf helm-v3.14.4-linux-amd64.tar.gz
-COPY helm /usr/local/bin/ chmod 755 /usr/local/bin/helm
+COPY linux-amd64/helm /usr/local/bin/ chmod 755 /usr/local/bin/helm
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
 COPY balance /usr/local/bin/
