@@ -2,7 +2,7 @@ FROM registry.access.redhat.com/ubi8/ubi
 COPY gcloud.repo /etc/yum.repos.d/
 COPY .okta-aws /home/pcs-user/
 COPY balance /usr/local/bin/
-RUN yum install -y bind-utils zsh java-11-openjdk-devel rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
+RUN yum install -y yum-utils bind-utils zsh java-11-openjdk-devel rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo;sudo yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
 RUN groupadd -g 10000 palos;useradd -s /bin/bash -g palos -G palos -u 1000810000 pcs-user
 RUN chown -Rf pcs-user.palos /home/pcs-user
 RUN runuser -l pcs-user -c 'curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh| sh'
