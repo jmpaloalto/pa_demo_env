@@ -1,5 +1,6 @@
 FROM registry.access.redhat.com/ubi8/ubi
 COPY gcloud.repo /etc/yum.repos.d/
+RUN mkdir /home/pcs-user/
 COPY .okta-aws /home/pcs-user/
 COPY balance /usr/local/bin/
 RUN yum install -y yum-utils bind-utils zsh java-11-openjdk-devel rsync yum-utils;yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo;yum-config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo;yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin;yum -y install terraform unzip git python38 sudo google-cloud-sdk; yum clean all
