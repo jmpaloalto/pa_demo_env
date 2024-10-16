@@ -26,7 +26,7 @@ RUN python3 /tmp/azinstall.py
 RUN chmod +x ./kubectl 
 RUN mv ./kubectl /usr/local/bin
 COPY twistcli /usr/local/bin/
-
+RUN dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
 
 
 RUN chmod +x /usr/local/bin/twistcli /usr/local/bin/run.py /usr/local/bin/okta-aws-cli /usr/local/bin/balance
